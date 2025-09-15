@@ -20,7 +20,7 @@
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: #58a6ff;
     }
     header p {
@@ -30,7 +30,7 @@
     }
     section {
       padding: 2rem 1rem;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
     h2 {
@@ -40,23 +40,57 @@
       display: inline-block;
       padding-bottom: 0.3rem;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin: 0.5rem 0;
-    }
-    a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
     .skills img {
       width: 50px;
       margin: 10px;
+      transition: transform 0.2s ease-in-out;
+    }
+    .skills img:hover {
+      transform: scale(1.2);
+    }
+    /* Project Cards */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #58a6ff;
+    }
+    .card p {
+      color: #c9d1d9;
+    }
+    .card a {
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    /* GitHub Stats */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .stats img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
     }
     footer {
       text-align: center;
@@ -95,11 +129,31 @@
 
   <section>
     <h2>📂 Projects</h2>
-    <ul>
-      <li><a href="#">Data Visualization Dashboard</a></li>
-      <li><a href="#">Predictive Machine Learning Model</a></li>
-      <li><a href="#">Deep Learning Experiment</a></li>
-    </ul>
+    <div class="projects">
+      <div class="card">
+        <h3>📊 Data Visualization Dashboard</h3>
+        <p>Interactive dashboard built using Pandas + Matplotlib to analyze datasets visually.</p>
+        <a href="#">View Project</a>
+      </div>
+      <div class="card">
+        <h3>🤖 Predictive ML Model</h3>
+        <p>Built a regression/classification model to predict real-world outcomes with scikit-learn.</p>
+        <a href="#">View Project</a>
+      </div>
+      <div class="card">
+        <h3>🧠 Deep Learning Experiment</h3>
+        <p>Explored CNNs for image recognition tasks using TensorFlow/Keras.</p>
+        <a href="#">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📊 GitHub Stats</h2>
+    <div class="stats">
+      <img src="https://github-readme-stats.vercel.app/api?username=Deshvan11&show_icons=true&theme=tokyonight" alt="GitHub Stats"/>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Deshvan11&layout=compact&theme=tokyonight" alt="Top Languages"/>
+    </div>
   </section>
 
   <section>
