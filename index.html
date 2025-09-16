@@ -1,267 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tanmay Deshmukh - Data Scientist Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanmay Deshmukh - Data Scientist Portfolio</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for a professional, vibrant color palette */
+        :root {
+            --primary: #00FFD1;     /* Bright Greenish-Blue */
+            --secondary: #007bff;   /* Bright Blue */
+            --accent: #FFFFFF;      /* White */
+            --dark: #0A0A0A;        /* Near-Black */
+            --light: #F0F0F0;       /* Off-White */
+            --bg-color: #0E0E0E;    /* Even darker gray for background */
+            --card-bg: #1A1A1A;     /* Slightly lighter dark gray for cards */
+            --radius: 14px;
+            --shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--light);
+            overflow-x: hidden;
+            background:  url('https://img.freepik.com/free-vector/geometrical-shape-patterned-blue-background-vector_53876-171225.jpg?semt=ais_incoming&w=740&q=80') center/cover no-repeat;
+            background-size: cover;
+        }
 
-  <!-- Google Fonts -->
-  <link href="<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        /* Navigation Bar */
+        #mainNav {
+            background-color: transparent;
+            border: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            display: none; /* Hiding the brand for this design */
+        }
+        .navbar-nav {
+            float: right;
+            margin-right: 20px;
+        }
+        .navbar-nav li a {
+            color: var(--light) !important;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav li a:hover {
+            color: var(--primary) !important;
+        }
+        
+        /* Hero Section */
+        header {
+            height: 60vh;
+            background: url('https://cdn.worktechacademy.com/uploads/2020/04/Home-Landing-scaled.jpeg') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        header .content {
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 6rem;
+            font-weight: 650;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1.2s ease;
+            color: var(--light)
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        header p {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+            color: var(--light);
+            font-weight: 500;
+        }
+        .cta-button {
+            padding: 1rem 3rem;
+            background: var(--secondary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-5px);
+            background: #0056b3;
+        }
 
-  <style>
-    :root {
-      --primary: #00c6ff;
-      --secondary: #0072ff;
-      --accent: #ffd700;
-      --dark: #0d1117;
-      --light: #f8f9fa;
-      --radius: 14px;
-      --shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-    }
+        /* Section base */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            animation: fadeIn 3s ease;
+            background: rgba(0,0,0,0.6);
+            background: url('https://img.freepik.com/free-vector/abstract-background-design-dark-green_53876-59276.jpg') center/cover no-repeat;
+            margin-bottom: 20px;
+            border-radius: 14px;
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--light);
+            font-weight: 700;
+        }
+        h2::after {
+            content: "";
+            width: 260px;
+            height: 4px;
+            background: var(--primary);
+            display: block;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        /* Skills section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+        }
+        .skill-badge {
+            text-align: center;
+            transition: transform 0.4s;
+        }
+        .skill-badge img {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+        .skill-badge span {
+            display: block;
+            margin-top: 0.8rem;
+            font-weight: 500;
+            color: var(--light);
+        }
+        .skill-badge:hover {
+            transform: translateY(-10px);
+        }
+        #skillss {
+            background: url('https://static.vecteezy.com/system/resources/previews/051/683/520/non_2x/emerald-green-abstract-luxury-background-with-gold-lines-elegant-wave-modern-wallpaper-vector.jpg') center/cover no-repeat;
+            color: #fff;               /* Make text readable */
+            padding: 4rem 2rem;        /* Keep spacing consistent */
+            border-radius: 12px;       /* Smooth edges */
+            position: relative;        /* For overlay if needed */
+            z-index: 1;
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background:  url('https://static.vecteezy.com/system/resources/previews/051/683/520/non_2x/emerald-green-abstract-luxury-background-with-gold-lines-elegant-wave-modern-wallpaper-vector.jpg') center/cover no-repeat;
-      color: var(--light);
-      overflow-x: hidden;
-    }
 
-    /* Header with background overlay */
-    header {
-      height: 50vh;
-      background: url('https://img.freepik.com/free-vector/abstract-background-design-dark-green_53876-59276.jpg') center/cover no-repeat;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    header .content {
-      position: relative;
-      z-index: 2;
-    }
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      animation: fadeInDown 1.2s ease;
-    }
-    header p {
-      font-size: 1.4rem;
-      margin-bottom: 2rem;
-      animation: fadeInUp 1.2s ease;
-    }
-    .cta-button {
-      padding: 0.8rem 2rem;
-      background: var(--accent);
-      color: #000;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 600;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
-    .cta-button:hover {
-      transform: scale(1.1);
-    }
+        /* About Section */
+        #about p {
+            font-size: 1.2rem;
+            
+            line-height: 1.8;
+            text-align: justify;
+        }
+        #about {
+            background: url('https://plus.unsplash.com/premium_photo-1683309565422-77818a287060?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydGZvbGlvJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D') 
+                                 center/cover no-repeat;
+            color: var(--dark);              /* white text for readability */
+            padding: 4rem 2rem;        /* space around content */
+            border-radius: 12px;       /* smooth edges if you want */
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); /* soft overlay */
+            font-weight: 500
+        }
 
-    /* Section base */
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-      animation: fadeIn 1s ease;
-    }
-    h2 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-      color: var(--accent);
-    }
-    h2::after {
-      content: "";
-      width: 50%;
-      height: 3px;
-      background: var(--accent);
-      display: block;
-      margin: 0.5rem auto 0;
-    }
+        
+        /* Projects section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            color: var(--light);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.4s;
+            cursor: pointer;
+            border: 2px solid var(--card-bg);
+            font-weight: 500
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border: 2px solid var(--primary);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        .project-card p {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #ccc;
+        }
 
-    /* Skills */
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-    .skill-badge {
-      text-align: center;
-      transition: transform 0.4s;
-    }
-    .skill-badge img {
-      width: 70px;
-      height: 70px;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
-    }
-    .skill-badge span {
-      display: block;
-      margin-top: 0.5rem;
-      font-weight: 500;
-    }
-    .skill-badge:hover {
-      transform: translateY(-10px) scale(1.1);
-    }
+       .project-img {
+            width: 100%;              /* makes image adapt to container */
+            max-width: 800px;         /* keeps it from getting too large */
+            height: auto;             /* maintains aspect ratio */
+            border-radius: 10px;      /* rounded corners */
+            display: block;           /* removes inline spacing */
+            margin: 1rem auto;        /* centers image */
+            object-fit: contain;      /* ensures no cropping */
+        }
+       .project-card .project-img {
+           width: 100%;
+           height: 180px;
+           object-fit: cover;
+           border-radius: 10px;
+           margin-bottom: 1rem;
+        
+        }
+        .tags {
+            margin-top: 1.5rem;
+        }
+        .tag {
+            background: var(--secondary);
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            display: inline-block;
+        }
 
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .project-card {
-      background: #fff;
-      color: #000;
-      padding: 1.5rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      transition: transform 0.4s;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-    }
-    .project-card h3 {
-      margin-top: 0;
-      color: var(--secondary);
-    }
-    .tags {
-      margin-top: 1rem;
-    }
-    .tag {
-      background: var(--secondary);
-      color: #fff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin: 0.2rem;
-      display: inline-block;
-    }
+        /* Footer */
+        footer {
+           text-align: center;
+           padding: 2rem;
+           background: rgba(0,0,0,0.8);
+           color: var(--light);
+        }
+        footer a {
+           margin: 0 1rem;
+           color: var(--accent);
+           text-decoration: none;
+           font-weight: 600;
+        }
+         footer a:hover {
+            text-decoration: underline;
+        }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: rgba(0,0,0,0.8);
-      color: var(--light);
-    }
-    footer a {
-      margin: 0 1rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-
-    @media(max-width:768px) {
-      header h1 { font-size: 2.2rem; }
-      header p { font-size: 1rem; }
-    }
-  </style>
+        /* Modal and Project Details Styling */
+        .modal-body .project-content {
+            padding: 20px;
+        }
+        .project-content h3 {
+            color: var(--primary);
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .project-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            color: var(--light);
+        }
+        .modal-header {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .modal-title {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        .close {
+            color: var(--light) !important;
+            opacity: 1;
+            text-shadow: none;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #333 !important;
+        }
+        .table-bordered > thead > tr > th, .table-bordered > tbody > tr > td {
+            border: 1px solid #444 !important;
+        }
+        .table > thead > tr > th {
+            color: var(--primary);
+            background-color: #222;
+        }
+        .table > tbody > tr > td {
+            color: var(--light);
+        }
+        /* Footer */
+       
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        
+        /* Responsive design */
+        @media(max-width:768px) {
+            header h1 { font-size: 3rem; }
+            header p { font-size: 1.2rem; }
+            section { padding: 3rem 1rem; }
+            h2 { font-size: 2rem; }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .navbar-nav {
+                float: none;
+                text-align: center;
+                margin-right: 0;
+            }
+            .navbar-collapse {
+                background: rgba(0,0,0,0.8);
+            }
+        }
+    </style>
 </head>
-<body>
+<body id="page-top">
 
-  <!-- Hero Section -->
-  <header>
-    <div class="content">
-      <h1>👋 Hi, I'm Tanmay Deshmukh</h1>
-      <p>Always curious, always learning, always building intelligent systems</p>
-      <a href="#projects" class="cta-button">View My Projects</a>
-    </div>
-  </header>
-
-  <!-- Skills -->
-  <section>
-    <h2>🛠 Skills & Tools</h2>
-    <div class="skills-container">
-      <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"/><span>Python</span></div>
-      <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jupyter/jupyter-original.svg"/><span>Jupyter</span></div>
-      <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg"/><span>Pandas</span></div>
-      <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg"/><span>NumPy</span></div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg"/><span>Matplotlib</span></div>
-      <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"/><span>Scikit-learn</span></div>
-      <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg"/><span>TensorFlow</span></div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2>📂 My Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Customer Churn Prediction</h3>
-        <p>Predicting customer churn for a telecom company with ML models.</p>
-        <div class="tags">
-          <span class="tag">ML</span>
-          <span class="tag">Python</span>
-          <span class="tag">Classification</span>
+    <nav id="mainNav" class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="page-scroll" href="#about">About</a></li>
+                    <li><a class="page-scroll" href="#projects">Projects</a></li>
+                    <li><a class="page-scroll" href="Deshvan11.github.io/Resume TD.pdf" target="_blank">Resume</a></li>
+                    <li><a class="page-scroll" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <div class="project-card">
-        <h3>Housing Price Regression</h3>
-        <p>Regression model to estimate house prices using structured datasets.</p>
-        <div class="tags">
-          <span class="tag">Regression</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">Scikit-learn</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <h3>E-commerce Sales Analysis</h3>
-        <p>EDA project uncovering sales trends, seasonal spikes, and customer behavior.</p>
-        <div class="tags">
-          <span class="tag">EDA</span>
-          <span class="tag">Matplotlib</span>
-          <span class="tag">Data Viz</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Footer -->
-  <footer>
-    <p>🌟 Connect with me:</p>
-    <a href="https://www.linkedin.com/in/tanmay-deshmukh-367a07259">LinkedIn</a>
-    <a href="https://github.com/Deshvan11">GitHub</a>
-  </footer>
+    <header>
+        <div class="content">
+            <h1>TANMAY DESHMUKH</h1>
+            <p>Data Scientist | Machine Learning Engineer</p>
+            <a href="#projects" class="cta-button">View My Projects</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a highly motivated and curious data scientist with a passion for transforming complex data into actionable insights. With a strong foundation in Python, I specialize in building robust machine learning models and creating intuitive data visualizations. I am a firm believer in the power of open data and open-source software to drive innovation and solve real-world problems. My experience spans across various domains, and I am always eager to take on new challenges and expand my skill set. I am adept at collaborating with cross-functional teams to deliver data-driven solutions that have a measurable impact on business decisions.</p>
+    </section>
+   
+    <section id="skillss">
+        <h2>🛠 Skills & Tools</h2>
+        <div class="skills-container">
+            <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"/><span>Python</span></div>
+            <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jupyter/jupyter-original.svg" alt="Jupyter"/><span>Jupyter</span></div>
+            <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" alt="Pandas"/><span>Pandas</span></div>
+            <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" alt="NumPy"/><span>NumPy</span></div>
+            <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="Matplotlib"/><span>Matplotlib</span></div>
+            <div class="skill-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn"/><span>Scikit-learn</span></div>
+            <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"/><span>TensorFlow</span></div>
+            <div class="skill-badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" alt="PyTorch"/><span>PyTorch</span></div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>📂 My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-toggle="modal" data-target="#projectModal" data-project-id="project1">
+                 <img 
+                     src="https://www.scnsoft.com/blog-pictures/business-intelligence/customer-churn-analysis.png" 
+                     alt="Customer Churn Prediction" 
+                     class="project-img"
+                 />
+                <h3>Customer Churn Prediction</h3>
+                <p>Predicting customer churn for a telecom company with ML models.</p>
+                <div class="tags">
+                    <span class="tag">ML</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Classification</span>
+                </div>
+            </div>
+            <div class="project-card" data-toggle="modal" data-target="#projectModal" data-project-id="project2">
+                <img 
+                     src="https://d3g3pd9iiem0rf.cloudfront.net/public-eu-central-1/categories/house-price-data/category_hub_page_cover_image/real-estate-data_fafc30a667786824.webp" 
+                     alt="Customer Churn Prediction" 
+                     class="project-img"
+                 />               
+                <h3>Housing Price Regression</h3>
+                <p>Regression model to estimate house prices using structured datasets.</p>
+                <div class="tags">
+                    <span class="tag">Regression</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Scikit-learn</span>
+                </div>
+            </div>
+            <div class="project-card" data-toggle="modal" data-target="#projectModal" data-project-id="project3">
+                <img 
+                     src="https://www.bluehost.com/blog/wp-content/uploads/2022/06/Facebook-Ecommerce-Mass-Marketing.png" 
+                     alt="Customer Churn Prediction" 
+                     class="project-img"
+                 />              
+                <h3>E-commerce Sales Analysis</h3>
+                <p>EDA project uncovering sales trends, seasonal spikes, and customer behavior.</p>
+                <div class="tags">
+                    <span class="tag">EDA</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">Data Viz</span>
+                </div>
+            </div>
+            <div class="project-card" data-toggle="modal" data-target="#projectModal" data-project-id="project4">
+               <img 
+                     src="https://brand24.com/blog/app/uploads/2022/08/Twitter-hashtag-analytics.png" 
+                     alt="Sentiment Analysis of Tweets" 
+                     class="project-img"
+                 />
+                <h3>Sentiment Analysis of Tweets</h3>
+                <p>Used NLP techniques to classify the sentiment of a dataset of tweets.</p>
+                <div class="tags">
+                    <span class="tag">NLP</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Text Mining</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="projectModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-content-container" style="display: none;">
+        <div id="project1-content">
+            <h3>Customer Churn Prediction</h3>
+            <p><strong>Overview:</strong> This project focuses on building a machine learning model to predict customer churn for a telecom company. Identifying at-risk customers early allows for targeted retention strategies.</p>
+            <h3>Methodology</h3>
+            <p>We used Python with **Pandas** for data cleaning, **Scikit-learn** for model training, and **Matplotlib** for data visualization. Key steps included handling imbalanced data, feature engineering, and evaluating several classification algorithms.</p>
+            <img src="https://via.placeholder.com/800x450/00FFD1/0A0A0A?text=Data+Preprocessing+Flow" alt="Data Preprocessing Flowchart">
+            <h3>Model Performance</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Accuracy</th>
+                            <th>F1-Score</th>
+                            <th>ROC-AUC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Logistic Regression</td>
+                            <td>85%</td>
+                            <td>0.78</td>
+                            <td>0.82</td>
+                        </tr>
+                        <tr>
+                            <td>Random Forest</td>
+                            <td>91%</td>
+                            <td>0.89</td>
+                            <td>0.91</td>
+                        </tr>
+                        <tr>
+                            <td>Gradient Boosting</td>
+                            <td>90%</td>
+                            <td>0.88</td>
+                            <td>0.90</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Final Output</h3>
+            <p>The final Random Forest model provided the best performance. The output was an interactive dashboard to visualize churn probability and key factors influencing churn.</p>
+            
+            <img 
+                     src="https://insightimi.wordpress.com/wp-content/uploads/2021/08/customer-churn-predictions-dashboard-final.png?w=1024" 
+                     alt="Customer Churn Prediction" 
+                     class="project-img"
+                 />
+        </div>
+
+        <div id="project2-content">
+            <h3>Housing Price Regression</h3>
+            <p><strong>Overview:</strong> Developed a regression model to forecast housing prices using data from various features like square footage, number of rooms, and location.</p>
+            <h3>Methodology</h3>
+            <p>The project involved extensive data visualization with **Seaborn** to understand correlations. We used a **Linear Regression** model as a baseline and then a **Gradient Boosting Regressor** to improve accuracy, handling categorical variables with one-hot encoding.</p>
+            <img src="https://via.placeholder.com/800x450/007bff/FFFFFF?text=Data+Visualization+Plot" alt="Data Visualization Plot">
+            <h3>Model Performance</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>R-squared</th>
+                            <th>RMSE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Linear Regression</td>
+                            <td>0.75</td>
+                            <td>45,000</td>
+                        </tr>
+                        <tr>
+                            <td>Gradient Boosting</td>
+                            <td>0.92</td>
+                            <td>22,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Key Findings</h3>
+            <p>The model identified that the total square footage and location were the most significant predictors of a house's price.</p>
+            
+            <img 
+                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHaojbOSWDWMh9xV7JoTNZixCtEc8fHMxduTOeo-NdZNlvo_VO7_T3y-wD8YnWfHQThHUDNCYBbDg8Gg0DGq-Lb0UmKuRuO-lk6tPh6t2Td31z007KWEyqD-1_CRKIMg_7bLm-WMS9JKQUDYjVU9EDaB6RLAWrNl_-7ZaWm0NhWw7jZBeOBrfUHaotVCg/s1771/Untitled.png" 
+                     alt="Housing Price Regression" 
+                     class="project-img"
+                 />
+        </div>
+
+        <div id="project3-content">
+            <h3>E-commerce Sales Analysis</h3>
+            <p><strong>Overview:</strong> Conducted an extensive exploratory data analysis (EDA) to uncover sales trends, customer behavior, and product performance for an online retail store. This project demonstrated proficiency in data manipulation and visualization.</p>
+            <h3>Methodology</h3>
+            <p>The project used **Pandas** for data cleaning and aggregation, and **Matplotlib** with **Seaborn** for visualizations. We performed time-series analysis to find seasonal trends and used a pivot table to find the top-selling products.</p>
+            <img src="https://via.placeholder.com/800x450/007bff/FFFFFF?text=Sales+Trend+Chart" alt="Sales Trend Chart">
+            <h3>Key Insights</h3>
+            <ul>
+                <li>Sales peaked during the holiday season (November-December).</li>
+                <li>The top three best-selling products accounted for 25% of total revenue.</li>
+                <li>Customers who buy Product A are highly likely to also buy Product B.</li>
+            </ul>
+            <h3>Final Report</h3>
+            <p>The insights were compiled into a comprehensive report and a presentation, highlighting actionable recommendations for the marketing team.</p>
+            
+            <img 
+                     src="https://media.licdn.com/dms/image/v2/D4D12AQGMLHl0kDPw_g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1708082949469?e=2147483647&v=beta&t=2u_su4wEZkOJGHk20v5QZAug0YCzg1EKGTT54CP56BM" 
+                     alt="E-commerce Sales Analysis" 
+                     class="project-img"
+                 />
+        </div>
+        
+        
+        <div id="project4-content">
+            <h3>Sentiment Analysis of Tweets</h3>
+            <p><strong>Overview:</strong> Used NLP techniques to classify the sentiment of a dataset of tweets as positive, negative, or neutral. This project highlights skills in text preprocessing and machine learning with text data.</p>
+            <h3>Methodology</h3>
+            <p>The project used **NLTK** for tokenization and stop-word removal. A **CountVectorizer** was used to convert text data into numerical features, which were then fed into a **Logistic Regression** model for classification.</p>
+            <h3>Model Performance</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Accuracy</td>
+                            <td>0.89</td>
+                        </tr>
+                        <tr>
+                            <td>F1-Score (Macro)</td>
+                            <td>0.87</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Visualization</h3>
+            <p>A word cloud was generated to visualize the most frequent words in positive and negative tweets, providing a quick summary of the sentiment.</p>
+            
+            <img 
+                     src="https://ik.imagekit.io/upgrad1/abroad-images/imageCompo/images/image8AEB0LW.jpg?pr-true" 
+                     alt="Sentiment Analysis of Tweets" 
+                     class="project-img"
+                 />
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // This JavaScript code handles displaying the correct project content in the modal
+            $('#projectModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var projectId = button.data('project-id');
+                var modal = $(this);
+                
+                // Get the project content from the hidden container
+                var projectContent = $('#' + projectId + '-content').html();
+                modal.find('.modal-body').html(projectContent);
+                
+                // Set the modal title to the project card title
+                modal.find('.modal-title').text(button.find('h3').text());
+            });
+            
+            // Smooth scrolling for navigation links
+            $('a.page-scroll').bind('click', function(event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: ($($anchor.attr('href')).offset().top)
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer>
+        
+        <h2>Connect With Me</h2>
+        <div style="text-align: center;">
+        <div class="skills-container">
+            <div class="skill-badge"><a href="https://www.linkedin.com/in/tanmay-deshmukh-367a07259" target="_blank" style="margin: 0 15px; font-size: 5rem; color: var(--light);"><i class="fa fa-linkedin"></i></a><span>Linked In</span></div>
+            
+            <div class="skill-badge"><a href="https://github.com/Deshvan11" target="_blank" style="margin: 0 15px; font-size: 5rem; color: var(--light);"><i class="fa fa-github"></i></a><span>GitHub</span></div>
+            <div class="skill-badge"><a href="mailto:tndeshmukh11@gmail.com" style="margin: 0 15px; font-size: 5rem; color: var(--light);"><i class="fa fa-envelope"></i></a><span>E-Mail</span></div>
+            
+        </div>
+        <p></p>
+        <h5 align="center"><p>🌟 Click on Icons above to Explore me more🌟</p>
+    </footer>
 </body>
 </html>
