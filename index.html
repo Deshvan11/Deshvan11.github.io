@@ -65,7 +65,13 @@
         .navbar-nav li a:hover {
             color: var(--primary) !important;
         }
-        
+        /*Mobile: Hamburger bars color*/
+        .navbar-toggle .icon-bar {
+           background-color: var(--light);
+        }
+        html {
+           scroll-behavior: smooth;
+        }
         /* Hero Section */
         header {
             height: 60vh;
@@ -367,6 +373,16 @@
     <nav id="mainNav" class="navbar navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+                <script>
+               
+               $(document).on('click','.navbar-collapse.in a',function(){
+                   if( $(this).attr('class') != 'dropdown-toggle' ){
+                     $('.navbar-collapse').collapse('hide');
+                   }
+                });
+                </script>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -376,10 +392,10 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="page-scroll" href="#about">About</a></li>
-                    <li><a class="page-scroll" href="#projects">Projects</a></li>
-                    <li><a class="page-scroll" href="resume/Resume TD.pdf" target="_blank">Resume</a></li>
-                    <li><a class="page-scroll" href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="resume/Resume TD.pdf" target="_blank">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -669,6 +685,7 @@
         });
     </script>
     <!-- Footer -->
+    <last id="contact">
     <footer>
         
         <h2>Connect With Me</h2>
@@ -683,5 +700,6 @@
         <p></p>
         <h5 align="center"><p>🌟 Click on Icons above to Explore me more🌟</p>
     </footer>
+    </last">
 </body>
 </html>
